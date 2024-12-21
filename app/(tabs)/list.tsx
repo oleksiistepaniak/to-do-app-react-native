@@ -2,8 +2,7 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {IconSymbol} from "@/components/ui/IconSymbol";
 import {StyleSheet} from "react-native";
 import {useTask} from "@/contexts/taskContext";
-import {ThemedText} from "@/components/ThemedText";
-import {ThemedView} from "@/components/ThemedView";
+import {TaskListItem} from "@/components/task/TaskListItem";
 
 export default function TaskList() {
     const {tasks} = useTask();
@@ -21,20 +20,7 @@ export default function TaskList() {
             }>
             {
                 tasks.map(it => (
-                    <ThemedView key={`task-${it.id}`}>
-                        <ThemedText>
-                            Identifier: {it.id}
-                        </ThemedText>
-                        <ThemedText>
-                            Title: {it.title}
-                        </ThemedText>
-                        <ThemedText>
-                            Description: {it.description}
-                        </ThemedText>
-                        <ThemedText>
-                            Status: {it.status}
-                        </ThemedText>
-                    </ThemedView>
+                    <TaskListItem key={`task-${it.id}`} task={it}/>
                 ))
             }
         </ParallaxScrollView>

@@ -1,7 +1,7 @@
 import {createContext, ReactNode, useContext, useState} from "react";
 import {TTaskStatus} from "@/app/(tabs)/create";
 
-interface Task {
+export interface Task {
     readonly id: number;
     readonly title: string;
     readonly description: string;
