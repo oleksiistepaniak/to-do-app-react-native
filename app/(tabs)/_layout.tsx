@@ -1,9 +1,8 @@
 import {Tabs} from 'expo-router';
 import React from 'react';
 import {Platform} from 'react-native';
-
 import {HapticTab} from '@/components/HapticTab';
-import {IconSymbol} from '@/components/ui/IconSymbol';
+import {IconSymbol, IconSymbolName} from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import {Colors} from '@/constants/Colors';
 import {useColorScheme} from '@/hooks/useColorScheme';
@@ -26,34 +25,45 @@ export default function TabLayout() {
                     default: {},
                 }),
             }}>
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: 'Home',
-                    tabBarIcon: ({color}) => <IconSymbol size={28} name="house.fill" color={color}/>,
-                }}
-            />
-            <Tabs.Screen
-                name="create"
-                options={{
-                    title: 'Create Task',
-                    tabBarIcon: ({color}) => <IconSymbol size={28} name="plus" color={color}/>,
-                }}
-            />
-            <Tabs.Screen
-                name="list"
-                options={{
-                    title: "List of tasks",
-                    tabBarIcon: ({color}) => <IconSymbol size={28} name="list.dash" color={color}/>,
-                }}
-            />
-            <Tabs.Screen
-                name="explore"
-                options={{
-                    title: 'Explore',
-                    tabBarIcon: ({color}) => <IconSymbol size={28} name="paperplane.fill" color={color}/>,
-                }}
-            />
+            {tabsScreenConfig.map(it => (
+                <Tabs.Screen
+                    key={`tabs-screen-${it.name}`}
+                    name={it.name}
+                    options={{
+                        title: it.iconTitle,
+                        tabBarIcon: ({color}) => <IconSymbol size={28} name={it.iconName} color={color}/>
+                    }}
+                />
+            ))}
         </Tabs>
     );
 }
+
+interface ITabScreenConfig {
+    name: string;
+    iconTitle: string;
+    iconName: IconSymbolName;
+}
+
+const tabsScreenConfig: ITabScreenConfig[] = [
+    {
+        name: "index",
+        iconTitle: "Home",
+        iconName: "house.fill",
+    },
+    {
+        name: "create",
+        iconTitle: "Create task",
+        iconName: "plus",
+    },
+    {
+        name: "list",
+        iconTitle: "Task List",
+        iconName: "list.dash",
+    },
+    {
+        name: "explore",
+        iconTitle: "Explore",
+        iconName: "paperplane.fill",
+    },
+]
