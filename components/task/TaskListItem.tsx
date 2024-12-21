@@ -10,7 +10,6 @@ interface ITaskListItemProps {
 }
 
 export const TaskListItem = (p: ITaskListItemProps) => {
-
     return (
         <ThemedView style={styles.container}>
             <ThemedText>
