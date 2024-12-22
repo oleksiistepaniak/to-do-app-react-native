@@ -61,9 +61,4 @@ const tabsScreenConfig: ITabScreenConfig[] = [
         iconTitle: "Task List",
         iconName: "list.dash",
     },
-    {
-        name: "explore",
-        iconTitle: "Explore",
-        iconName: "paperplane.fill",
-    },
 ]

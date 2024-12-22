@@ -39,7 +39,7 @@ export const TaskCreationView = () => {
                 />
             }>
             <ThemedView style={styles.block_title}>
-                <ThemedText type="subtitle" style={{color: "orange", textAlign: "center"}}>
+                <ThemedText type="subtitle" style={{textAlign: "center"}}>
                     {T.titles.create_task}
                 </ThemedText>
             </ThemedView>
