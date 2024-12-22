@@ -39,7 +39,7 @@ export const TaskCreationView = () => {
                 />
             }>
             <ThemedView style={styles.block_title}>
-                <ThemedText type="subtitle" style={{color: "orange"}}>
+                <ThemedText type="subtitle" style={{color: "orange", textAlign: "center"}}>
                     {T.titles.create_task}
                 </ThemedText>
             </ThemedView>
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
         borderColor: 'orange',
         borderRadius: 5,
         color: "white",
-        padding: 4,
+        paddingVertical: 4,
+        paddingHorizontal: 10,
         height: 40,
     },
     textarea: {
@@ -91,7 +92,8 @@ const styles = StyleSheet.create({
         borderColor: 'orange',
         borderRadius: 5,
         color: "white",
-        padding: 4,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
         minHeight: 70,
     },
 });

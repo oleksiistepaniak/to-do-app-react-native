@@ -8,7 +8,7 @@ interface IEmptyProps {
 export const Empty = (p: IEmptyProps) => {
     return (
         <ThemedView style={{display: "flex", alignItems: "center"}}>
-            <ThemedText type="subtitle">
+            <ThemedText type="subtitle" style={{textAlign: "center", color: "orange"}}>
                 {p.message}
             </ThemedText>
         </ThemedView>
