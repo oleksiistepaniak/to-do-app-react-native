@@ -4,6 +4,7 @@ import { ITask, TCreateTaskParams } from "@/types/types";
 interface TaskContextType {
     tasks: ITask[];
     createTask: (params: TCreateTaskParams) => void;
+    updateTask: (id: number, params: Partial<TCreateTaskParams>) => void;
 }
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
@@ -21,7 +22,23 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         setNextId((prev) => prev + 1);
     }
 
-    return <TaskContext.Provider value={{ tasks, createTask }}>{children}</TaskContext.Provider>;
+    function updateTask(id: number, params: Partial<TCreateTaskParams>): void {
+        setTasks((prev) => {
+            return prev.map((it) => {
+                if (it.id === id) {
+                    return {
+                        ...it,
+                        title: params.title ?? it.title,
+                        description: params.description ?? it.description,
+                        status: params.status ?? it.status,
+                    };
+                }
+                return it;
+            });
+        });
+    }
+
+    return <TaskContext.Provider value={{ tasks, createTask, updateTask }}>{children}</TaskContext.Provider>;
 };
 
 export const useTask = (): TaskContextType => {

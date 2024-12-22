@@ -6,8 +6,8 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { T } from "@/constants/Text";
 import { NotificationHelper } from "@/helpers/NotificationHelper";
-import { useTask } from "@/contexts/taskContext";
 import { TCreateTaskParams } from "@/types/types";
+import { useTask } from "@/contexts/TaskContext";
 
 export const TaskCreationView = () => {
     const [params, setParams] = useState<TCreateTaskParams>({

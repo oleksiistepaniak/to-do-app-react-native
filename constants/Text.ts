@@ -5,11 +5,18 @@ export const T = {
     },
     common: {
         create: "Створити",
+        edit: "Редагувати",
+        update: "Оновити",
+        close: "Закрити",
     },
     notifications: {
         task: {
             created: "Ви успішно створили нове завдання і воно було додане до списку Ваших завдань!",
+            updated: "Ви успішно оновили Ваше завдання і воно було оновлене у списку Ваших завдань!",
         },
+    },
+    descriptions: {
+        edit_task: "Тут Ви можете редагувати Ваше завдання!",
     },
     titles: {
         tabs: {
@@ -18,6 +25,7 @@ export const T = {
             task_list: "Список завдань",
         },
         create_task: "Створіть ваше завдання в Alex Mobile TODO!",
+        edit_task_dialog: "Редагувати Ваше завдання",
         success: "Ура, успішно!",
         redirect_to_create_task: "Перейти до створення нових завдань!",
     },

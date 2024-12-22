@@ -1,10 +1,10 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { StyleSheet } from "react-native";
-import { useTask } from "@/contexts/taskContext";
 import { TaskListItem } from "@/components/task/TaskListItem";
 import { T } from "@/constants/Text";
 import { Empty } from "@/components/common/Empty";
+import { useTask } from "@/contexts/TaskContext";
 
 export const TaskListView = () => {
     const { tasks } = useTask();
