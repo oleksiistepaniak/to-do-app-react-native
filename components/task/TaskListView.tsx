@@ -3,6 +3,8 @@ import {IconSymbol} from "@/components/ui/IconSymbol";
 import {StyleSheet} from "react-native";
 import {useTask} from "@/contexts/taskContext";
 import {TaskListItem} from "@/components/task/TaskListItem";
+import {Empty} from "@/components/common/empty";
+import {T} from "@/constants/Text";
 
 export const TaskListView = () => {
     const {tasks} = useTask();
@@ -18,7 +20,10 @@ export const TaskListView = () => {
                     style={styles.headerImage}
                 />
             }>
-            {tasks.map(it => <TaskListItem key={`task-${it.id}`} task={it}/>)}
+            {tasks.length === 0
+                ? <Empty message={T.empty_task_list}/>
+                : tasks.map(it => <TaskListItem key={`task-${it.id}`} task={it}/>)
+            }
         </ParallaxScrollView>
     )
 }

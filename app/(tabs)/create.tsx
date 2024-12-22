@@ -1,11 +1,12 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {Button, StyleSheet, TextInput} from "react-native";
 import {IconSymbol} from "@/components/ui/IconSymbol";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 import {ThemedText} from "@/components/ThemedText";
 import {ThemedView} from "@/components/ThemedView";
-import {Picker} from '@react-native-picker/picker';
 import {TCreateTaskParams, useTask} from "@/contexts/taskContext";
+import {T} from "@/constants/Text";
+import {NotificationHelper} from "@/helpers/NotificationHelper";
 
 export enum ETaskStatus {
     CREATED = "created",
@@ -16,18 +17,21 @@ export enum ETaskStatus {
 export type TTaskStatus = keyof typeof ETaskStatus;
 
 export default function CreateTask() {
-    const [title, setTitle] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [selectedStatus, setSelectedStatus] = useState<TTaskStatus>("CREATED");
-    const {tasks, createTask} = useTask();
+    const [params, setParams] = useState<TCreateTaskParams>({
+        status: "CREATED",
+        title: "",
+        description: "",
+    });
+    const {createTask} = useTask();
+
+    const isSubmitButtonDisabled = useMemo(() => {
+        return !Object.values(params).every(Boolean);
+    }, [params]);
 
     const handleCreateTask = () => {
-        const params: TCreateTaskParams = {
-            title,
-            description,
-            status: selectedStatus,
-        };
         createTask(params);
+        setParams(prev => ({...prev, title: "", description: ""}));
+        NotificationHelper.displaySuccessMessage(T.notifications.task.created);
     }
 
     return (
@@ -35,57 +39,37 @@ export default function CreateTask() {
             headerBackgroundColor={{light: '#D0D0D0', dark: '#353636'}}
             headerImage={
                 <IconSymbol
-                    size={310}
-                    color="#808080"
-                    name="chevron.left.forwardslash.chevron.right"
+                    size={220}
+                    color="orange"
+                    name="arrow.down.doc"
                     style={styles.headerImage}
                 />
             }>
-            <ThemedView style={styles.text}>
-                <ThemedText type="defaultSemiBold">
-                    Title: {title}
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.text}>
-                <ThemedText type="defaultSemiBold">
-                    Description: {description}
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.text}>
-                <ThemedText type="defaultSemiBold">
-                    Status: {selectedStatus}
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.text}>
-                <ThemedText type="defaultSemiBold">
-                    All number of tasks: {tasks.length}
+            <ThemedView style={styles.block_title}>
+                <ThemedText type="subtitle" style={{color: "orange"}}>
+                    {T.titles.create_task}
                 </ThemedText>
             </ThemedView>
             <TextInput
-                placeholder="task title"
-                value={title}
-                onChangeText={setTitle}
+                style={styles.input}
+                placeholder={T.input_placeholders.task_title}
+                value={params.title}
+                onChangeText={val => setParams(prev => ({...prev, title: val}))}
             />
             <TextInput
-                placeholder="description title"
-                value={description}
-                onChangeText={setDescription}
+                multiline
+                numberOfLines={10}
+                style={styles.textarea}
+                placeholder={T.input_placeholders.task_description}
+                value={params.description}
+                onChangeText={val => setParams(prev => ({...prev, description: val}))}
             />
-            <Picker
-                selectedValue={selectedStatus}
-                onValueChange={itemValue => setSelectedStatus(itemValue)}
-            >
-                {Object.keys(ETaskStatus).map((key, index) => {
-                    return <Picker.Item
-                        key={`status-${index}`}
-                        label={key}
-                        value={key}
-                    />
-                })}
-            </Picker>
-            <Button onPress={handleCreateTask} title="CREATE TASK">
-
-            </Button>
+            <Button
+                disabled={isSubmitButtonDisabled}
+                color="orange"
+                title={T.common.create}
+                onPress={handleCreateTask}
+            />
         </ParallaxScrollView>
     )
 }
@@ -93,18 +77,28 @@ export default function CreateTask() {
 const styles = StyleSheet.create({
     headerImage: {
         color: '#808080',
-        bottom: -90,
-        left: -35,
+        bottom: 0,
+        left: 90,
         position: 'absolute',
     },
+    block_title: {
+        display: "flex",
+        alignItems: "center",
+    },
     input: {
-        outline: "1px solid red",
+        borderWidth: 1,
+        borderColor: 'orange',
+        borderRadius: 5,
+        color: "white",
+        padding: 4,
+        height: 40,
     },
-    text: {
-        outline: "1px solid red",
-    },
-    titleContainer: {
-        flexDirection: 'row',
-        gap: 8,
+    textarea: {
+        borderWidth: 1,
+        borderColor: 'orange',
+        borderRadius: 5,
+        color: "white",
+        padding: 4,
+        minHeight: 70,
     },
 });
