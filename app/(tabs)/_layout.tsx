@@ -6,6 +6,7 @@ import {IconSymbol, IconSymbolName} from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import {Colors} from '@/constants/Colors';
 import {useColorScheme} from '@/hooks/useColorScheme';
+import {T} from "@/constants/Text";
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
@@ -48,17 +49,17 @@ interface ITabScreenConfig {
 const tabsScreenConfig: ITabScreenConfig[] = [
     {
         name: "index",
-        iconTitle: "Home",
+        iconTitle: T.titles.tabs.main,
         iconName: "house.fill",
     },
     {
         name: "create",
-        iconTitle: "Create task",
+        iconTitle: T.titles.tabs.create_task,
         iconName: "plus",
     },
     {
         name: "list",
-        iconTitle: "Task List",
+        iconTitle: T.titles.tabs.task_list,
         iconName: "list.dash",
     },
 ]

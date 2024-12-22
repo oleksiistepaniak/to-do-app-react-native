@@ -12,6 +12,11 @@ export const T = {
         },
     },
     titles: {
+        tabs: {
+          main: "Головна",
+          create_task: "Створити завдання",
+          task_list: "Список завдань",
+        },
         create_task: "Створіть ваше завдання в Alex Mobile TODO!",
         success: "Ура, успішно!",
         redirect_to_create_task: "Перейти до створення нових завдань!",
