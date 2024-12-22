@@ -1,8 +1,8 @@
-import {ThemedView} from "@/components/ThemedView";
-import {ThemedText} from "@/components/ThemedText";
-import {T} from "@/constants/Text";
-import {StyleSheet} from "react-native";
-import {ITask, TTaskStatus} from "@/types/types";
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import { T } from "@/constants/Text";
+import { StyleSheet } from "react-native";
+import { ITask, TTaskStatus } from "@/types/types";
 
 interface ITaskListItemProps {
     task: ITask;
@@ -24,14 +24,12 @@ export const TaskListItem = (p: ITaskListItemProps) => {
                 {T.status}: {resolveStatus(p.task.status)}
             </ThemedText>
         </ThemedView>
-    )
-}
+    );
+};
 
 function resolveStatus(value: TTaskStatus): string {
-    if (value === "CREATED")
-        return "Створено";
-    if (value === "IN_PROGRESS")
-        return "В процесі";
+    if (value === "CREATED") return "Створено";
+    if (value === "IN_PROGRESS") return "В процесі";
     return "Завершено";
 }
 
@@ -47,5 +45,5 @@ const styles = StyleSheet.create({
         borderColor: "orange",
         borderRadius: 10,
         borderWidth: 1,
-    }
-})
+    },
+});

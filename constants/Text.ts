@@ -13,9 +13,9 @@ export const T = {
     },
     titles: {
         tabs: {
-          main: "Головна",
-          create_task: "Створити завдання",
-          task_list: "Список завдань",
+            main: "Головна",
+            create_task: "Створити завдання",
+            task_list: "Список завдань",
         },
         create_task: "Створіть ваше завдання в Alex Mobile TODO!",
         success: "Ура, успішно!",
@@ -26,4 +26,4 @@ export const T = {
     description: "Опис",
     status: "Статус",
     empty_task_list: "На жаль, Ви поки ще не створили жодного завдання в списку!",
-}
+};

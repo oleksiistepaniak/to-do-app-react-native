@@ -1,0 +1,9 @@
+node_modules/
+expo-env.d.ts
+.expo/
+tsconfig.json
+package.json
+package-lock.json
+app.json
+README.md
+.gitignore

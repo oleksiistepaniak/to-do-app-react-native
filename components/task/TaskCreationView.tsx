@@ -1,13 +1,13 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import {Button, StyleSheet, TextInput} from "react-native";
-import {IconSymbol} from "@/components/ui/IconSymbol";
-import {useMemo, useState} from "react";
-import {ThemedText} from "@/components/ThemedText";
-import {ThemedView} from "@/components/ThemedView";
-import {T} from "@/constants/Text";
-import {NotificationHelper} from "@/helpers/NotificationHelper";
-import {useTask} from "@/contexts/taskContext";
-import {TCreateTaskParams} from "@/types/types";
+import { Button, StyleSheet, TextInput } from "react-native";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { useMemo, useState } from "react";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { T } from "@/constants/Text";
+import { NotificationHelper } from "@/helpers/NotificationHelper";
+import { useTask } from "@/contexts/taskContext";
+import { TCreateTaskParams } from "@/types/types";
 
 export const TaskCreationView = () => {
     const [params, setParams] = useState<TCreateTaskParams>({
@@ -15,7 +15,7 @@ export const TaskCreationView = () => {
         title: "",
         description: "",
     });
-    const {createTask} = useTask();
+    const { createTask } = useTask();
 
     const isSubmitButtonDisabled = useMemo(() => {
         return !Object.values(params).every(Boolean);
@@ -23,23 +23,17 @@ export const TaskCreationView = () => {
 
     const handleCreateTask = () => {
         createTask(params);
-        setParams(prev => ({...prev, title: "", description: ""}));
+        setParams((prev) => ({ ...prev, title: "", description: "" }));
         NotificationHelper.displaySuccessMessage(T.notifications.task.created);
-    }
+    };
 
     return (
         <ParallaxScrollView
-            headerBackgroundColor={{light: '#D0D0D0', dark: '#353636'}}
-            headerImage={
-                <IconSymbol
-                    size={220}
-                    color="orange"
-                    name="arrow.down.doc"
-                    style={styles.headerImage}
-                />
-            }>
+            headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+            headerImage={<IconSymbol size={220} color="orange" name="arrow.down.doc" style={styles.headerImage} />}
+        >
             <ThemedView style={styles.block_title}>
-                <ThemedText type="subtitle" style={{textAlign: "center"}}>
+                <ThemedText type="subtitle" style={{ textAlign: "center" }}>
                     {T.titles.create_task}
                 </ThemedText>
             </ThemedView>
@@ -47,7 +41,7 @@ export const TaskCreationView = () => {
                 style={styles.input}
                 placeholder={T.input_placeholders.task_title}
                 value={params.title}
-                onChangeText={val => setParams(prev => ({...prev, title: val}))}
+                onChangeText={(val) => setParams((prev) => ({ ...prev, title: val }))}
             />
             <TextInput
                 multiline
@@ -55,24 +49,19 @@ export const TaskCreationView = () => {
                 style={styles.textarea}
                 placeholder={T.input_placeholders.task_description}
                 value={params.description}
-                onChangeText={val => setParams(prev => ({...prev, description: val}))}
+                onChangeText={(val) => setParams((prev) => ({ ...prev, description: val }))}
             />
-            <Button
-                disabled={isSubmitButtonDisabled}
-                color="orange"
-                title={T.common.create}
-                onPress={handleCreateTask}
-            />
+            <Button disabled={isSubmitButtonDisabled} color="orange" title={T.common.create} onPress={handleCreateTask} />
         </ParallaxScrollView>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     headerImage: {
-        color: '#808080',
+        color: "#808080",
         bottom: 0,
         left: 90,
-        position: 'absolute',
+        position: "absolute",
     },
     block_title: {
         display: "flex",
@@ -80,7 +69,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: 'orange',
+        borderColor: "orange",
         borderRadius: 5,
         color: "white",
         paddingVertical: 4,
@@ -89,7 +78,7 @@ const styles = StyleSheet.create({
     },
     textarea: {
         borderWidth: 1,
-        borderColor: 'orange',
+        borderColor: "orange",
         borderRadius: 5,
         color: "white",
         paddingVertical: 10,

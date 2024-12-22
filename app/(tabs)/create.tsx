@@ -1,5 +1,5 @@
-import {TaskCreationView} from "@/components/task/TaskCreationView";
+import { TaskCreationView } from "@/components/task/TaskCreationView";
 
 export default function CreateTask() {
-    return <TaskCreationView/>
+    return <TaskCreationView />;
 }

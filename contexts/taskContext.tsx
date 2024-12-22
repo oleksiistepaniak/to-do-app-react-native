@@ -1,5 +1,5 @@
-import {createContext, ReactNode, useContext, useState} from "react";
-import {ITask, TCreateTaskParams} from "@/types/types";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { ITask, TCreateTaskParams } from "@/types/types";
 
 interface TaskContextType {
     tasks: ITask[];
@@ -8,7 +8,7 @@ interface TaskContextType {
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
-export const TaskProvider = ({children}: { children: ReactNode }) => {
+export const TaskProvider = ({ children }: { children: ReactNode }) => {
     const [nextId, setNextId] = useState<number>(0);
     const [tasks, setTasks] = useState<ITask[]>([]);
 
@@ -17,15 +17,11 @@ export const TaskProvider = ({children}: { children: ReactNode }) => {
             id: nextId,
             ...params,
         };
-        setTasks(prev => prev.concat([task]));
-        setNextId(prev => prev + 1);
+        setTasks((prev) => prev.concat([task]));
+        setNextId((prev) => prev + 1);
     }
 
-    return (
-        <TaskContext.Provider value={{tasks, createTask}}>
-            {children}
-        </TaskContext.Provider>
-    );
+    return <TaskContext.Provider value={{ tasks, createTask }}>{children}</TaskContext.Provider>;
 };
 
 export const useTask = (): TaskContextType => {
