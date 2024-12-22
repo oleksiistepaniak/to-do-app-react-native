@@ -3,8 +3,8 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { StyleSheet } from "react-native";
 import { useTask } from "@/contexts/taskContext";
 import { TaskListItem } from "@/components/task/TaskListItem";
-import { Empty } from "@/components/common/empty";
 import { T } from "@/constants/Text";
+import { Empty } from "@/components/common/Empty";
 
 export const TaskListView = () => {
     const { tasks } = useTask();

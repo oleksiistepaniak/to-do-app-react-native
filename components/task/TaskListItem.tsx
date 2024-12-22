@@ -1,14 +1,22 @@
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { T } from "@/constants/Text";
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 import { ITask, TTaskStatus } from "@/types/types";
+import { useState } from "react";
+import { BaseDialog } from "@/components/common/BaseDialog";
 
 interface ITaskListItemProps {
     task: ITask;
 }
 
 export const TaskListItem = (p: ITaskListItemProps) => {
+    const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
+
+    const handleOpenEditDialog = () => {
+        setIsEditDialogOpen(true);
+    }
+
     return (
         <ThemedView style={styles.container}>
             <ThemedText>
@@ -23,6 +31,8 @@ export const TaskListItem = (p: ITaskListItemProps) => {
             <ThemedText>
                 {T.status}: {resolveStatus(p.task.status)}
             </ThemedText>
+            <Button color="darkgreen" title="Редагувати" onPress={handleOpenEditDialog}/>
+            <BaseDialog open={isEditDialogOpen} title="Редагувати завдання" description="Тут ви можете редагувати Ваше завдання!" onClose={() => setIsEditDialogOpen(false)}/>
         </ThemedView>
     );
 };
