@@ -21,7 +21,11 @@ export const TaskListView = () => {
                 />
             }>
             {tasks.length === 0
-                ? <Empty message={T.empty_task_list}/>
+                ? <Empty
+                    message={T.empty_task_list}
+                    href="/create"
+                    textLinkButton={T.titles.redirect_to_create_task}
+                />
                 : tasks.map(it => <TaskListItem key={`task-${it.id}`} task={it}/>)
             }
         </ParallaxScrollView>

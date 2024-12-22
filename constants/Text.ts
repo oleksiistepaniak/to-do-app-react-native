@@ -14,6 +14,7 @@ export const T = {
     titles: {
         create_task: "Створіть ваше завдання в Alex Mobile TODO!",
         success: "Ура, успішно!",
+        redirect_to_create_task: "Перейти до створення нових завдань!",
     },
     identifier: "Ідентифікатор",
     title: "Назва",
