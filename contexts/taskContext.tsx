@@ -1,17 +1,8 @@
 import {createContext, ReactNode, useContext, useState} from "react";
-import {TTaskStatus} from "@/app/(tabs)/create";
-
-export interface Task {
-    readonly id: number;
-    readonly title: string;
-    readonly description: string;
-    readonly status: TTaskStatus;
-}
-
-export type TCreateTaskParams = Omit<Task, "id">;
+import {ITask, TCreateTaskParams} from "@/types/types";
 
 interface TaskContextType {
-    tasks: Task[];
+    tasks: ITask[];
     createTask: (params: TCreateTaskParams) => void;
 }
 
@@ -19,10 +10,10 @@ const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TaskProvider = ({children}: { children: ReactNode }) => {
     const [nextId, setNextId] = useState<number>(0);
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<ITask[]>([]);
 
     function createTask(params: TCreateTaskParams): void {
-        const task: Task = {
+        const task: ITask = {
             id: nextId,
             ...params,
         };

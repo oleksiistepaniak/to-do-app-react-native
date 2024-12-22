@@ -1,12 +1,11 @@
-import {Task} from "@/contexts/taskContext";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {T} from "@/constants/Text";
 import {StyleSheet} from "react-native";
-import {TTaskStatus} from "@/app/(tabs)/create";
+import {ITask, TTaskStatus} from "@/types/types";
 
 interface ITaskListItemProps {
-    task: Task;
+    task: ITask;
 }
 
 export const TaskListItem = (p: ITaskListItemProps) => {
