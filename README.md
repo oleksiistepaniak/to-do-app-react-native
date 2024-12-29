@@ -1,50 +1,87 @@
-# Welcome to your Expo app 👋
+# To-Do Mobile App (React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a mobile to-do list application developed using **React Native** and **Expo**. It consists of three main tabs:
 
-## Get started
+1. **Home Screen** — general information about the app.
+2. **Create Task** — allows users to create new tasks and add them to their task list.
+3. **Task List** — allows users to view, update, start, complete, and delete tasks.
 
-1. Install dependencies
+All data is stored in **Context API** during runtime without any backend server.
 
-   ```bash
-   npm install
-   ```
+## Table of Contents
 
-2. Start the app
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [App Structure](#app-structure)
+- [Key Features](#key-features)
+- [Technologies](#technologies)
+- [Author](#author)
 
-   ```bash
-    npx expo start
-   ```
+## Installation
 
-In the output, you'll find options to open the app in a
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/to-do-app-react-native.git
+    ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+2. Install dependencies:
+    ```bash
+    cd to-do-app-react-native
+    npm install
+    ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Running the Project
 
-## Get a fresh project
+To run the project on your mobile device, follow these steps:
 
-When you're ready, run:
+1. **Install Expo Go**:
+   - For **Android**, download **Expo Go** from the [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent).
+   - For **iOS**, download **Expo Go** from the [App Store](https://apps.apple.com/us/app/expo-go/id982107779).
 
-```bash
-npm run reset-project
-```
+2. **Start the project**:
+   - Open your terminal and navigate to the project folder.
+   - Run the following command to start the Expo server:
+     ```bash
+     npx expo start
+     ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. **Scan the QR Code**:
+   - Once the Expo server is running, a QR code will appear in your terminal.
+   - Open the **Expo Go** app on your mobile device and scan the QR code to launch the app on your phone.
 
-## Learn more
+The app should now be running on your mobile device!
 
-To learn more about developing your project with Expo, look at the following resources:
+## App Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Main Components
 
-## Join the community
+1. **Home Screen**: Displays general information about the app, such as the app name and other details.
+2. **Create Task Screen**: Allows users to create new tasks by filling in the task title and description.
+3. **Task List Screen**: Displays a list of all created tasks and allows users to:
+   - Update task details.
+   - Change task status (active/completed).
+   - Delete tasks from the list.
 
-Join our community of developers creating universal apps.
+### Context API
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Task data is stored locally using **Context API**, meaning all changes (creating, updating, deleting tasks) are stored only in the current session, and they are not persisted after closing the app. The context is used for global state management across the app.
+
+## Key Features
+
+- **Create Task**: The app allows users to create tasks with a title and description. Once a task is created, it gets added to the task list.
+- **View Tasks**: In the task list tab, users can view all created tasks along with their current status (active or completed).
+- **Update Tasks**: Users can update the status of tasks, marking them as "completed" or "active".
+- **Delete Tasks**: Users can remove tasks from the list.
+- **Real-time Data**: Since data is stored only in memory via Context API, the app does not have a backend and does not persist data after restarting the app.
+
+## Technologies
+
+- **React Native**: Framework for building mobile applications.
+- **Expo**: Platform for rapid mobile app development using React Native.
+- **Context API**: For global state management without a backend.
+- **React Navigation**: For navigation between app screens.
+- **Jest**: For testing the application.
+
+## Author
+
+This project was developed by [Oleksii Stepaniak](https://github.com/oleksiistepaniak/).
