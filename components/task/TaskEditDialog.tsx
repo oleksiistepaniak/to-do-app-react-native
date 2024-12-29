@@ -37,6 +37,8 @@ export const TaskEditDialog = (p: ITaskEditDialogProps) => {
         <BaseDialog
             open={p.open}
             title={T.titles.edit_task_dialog}
+            submitBtnLabel={T.common.update}
+            cancelBtnLabel={T.common.close}
             description={T.descriptions.edit_task}
             onSubmit={handleUpdateTask}
             onClose={handleClose}

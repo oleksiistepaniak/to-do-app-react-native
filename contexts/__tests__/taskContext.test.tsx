@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// @ts-ignore
 import { TaskProvider, useTask } from "@/contexts/TaskContext";
 import { Button, View } from "react-native";
 import { TCreateTaskParams } from "@/types/types";
@@ -46,6 +45,40 @@ const TestUpdateComponent = () => {
     );
 };
 
+const TestStartTaskComponent = () => {
+    const { tasks, createTask, updateTask } = useTask();
+
+    useEffect(() => {
+        createTask(params);
+    }, []);
+
+    return (
+        <View>
+            <Button title="START TASK" onPress={() => updateTask(tasks[0].id, { status: "IN_PROGRESS" })} />
+            {tasks.map((it) => (
+                <ThemedText key={it.id}>{it.status}</ThemedText>
+            ))}
+        </View>
+    );
+};
+
+const TestCompleteTaskComponent = () => {
+    const { tasks, createTask, updateTask } = useTask();
+
+    useEffect(() => {
+        createTask(params);
+    }, []);
+
+    return (
+        <View>
+            <Button title="COMPLETE TASK" onPress={() => updateTask(tasks[0].id, { status: "COMPLETED" })} />
+            {tasks.map((it) => (
+                <ThemedText key={it.id}>{it.status}</ThemedText>
+            ))}
+        </View>
+    );
+};
+
 describe("TaskContext.test", () => {
     it("should add a task when createTask is called", () => {
         const { getByText } = render(
@@ -75,5 +108,31 @@ describe("TaskContext.test", () => {
         fireEvent.press(updateButton);
 
         expect(getByText("updated")).toBeTruthy();
+    });
+
+    it("should start the task when updateTask is called", () => {
+        const { getByText } = render(
+            <TaskProvider>
+                <TestStartTaskComponent />
+            </TaskProvider>,
+        );
+
+        const startButton = getByText("START TASK");
+        fireEvent.press(startButton);
+
+        expect(getByText("IN_PROGRESS")).toBeTruthy();
+    });
+
+    it("should complete the task when updateTask is called", () => {
+        const { getByText } = render(
+            <TaskProvider>
+                <TestCompleteTaskComponent />
+            </TaskProvider>,
+        );
+
+        const completeButton = getByText("COMPLETE TASK");
+        fireEvent.press(completeButton);
+
+        expect(getByText("COMPLETED")).toBeTruthy();
     });
 });

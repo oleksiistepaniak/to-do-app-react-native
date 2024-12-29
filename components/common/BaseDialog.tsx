@@ -1,11 +1,12 @@
 import Dialog from "react-native-dialog";
 import { ReactNode } from "react";
-import { T } from "@/constants/Text";
 
 interface IBaseDialogProps {
     open: boolean;
     title: string;
     description: string;
+    cancelBtnLabel: string;
+    submitBtnLabel: string;
     onClose: () => void;
     onSubmit: () => void;
     children?: ReactNode;
@@ -17,8 +18,8 @@ export const BaseDialog = (p: IBaseDialogProps) => {
             <Dialog.Title>{p.title}</Dialog.Title>
             <Dialog.Description>{p.description}</Dialog.Description>
             {p.children}
-            <Dialog.Button label={T.common.close} onPress={p.onClose} />
-            <Dialog.Button label={T.common.update} onPress={p.onSubmit} />
+            <Dialog.Button label={p.cancelBtnLabel} onPress={p.onClose} />
+            <Dialog.Button label={p.submitBtnLabel} onPress={p.onSubmit} />
         </Dialog.Container>
     );
 };
