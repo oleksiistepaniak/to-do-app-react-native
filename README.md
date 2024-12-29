@@ -21,7 +21,7 @@ All data is stored in **Context API** during runtime without any backend server.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/to-do-app-react-native.git
+    git clone https://github.com/oleksiistepaniak/to-do-app-react-native.git
     ```
 
 2. Install dependencies:
