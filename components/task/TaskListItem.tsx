@@ -58,13 +58,15 @@ export const TaskListItem = (p: ITaskListItemProps) => {
                 <Button color="darkorange" title={"Виконувати"} onPress={handleStartTask} />
                 <Button color="darkgray" title={"Завершити"} onPress={handleCompleteTask} />
             </ThemedView>
-            <TaskEditDialog
-                task={p.task}
-                open={isEditDialogOpen}
-                onClose={() => {
-                    setIsEditDialogOpen(false);
-                }}
-            />
+            {isEditDialogOpen && (
+                <TaskEditDialog
+                    task={p.task}
+                    open={isEditDialogOpen}
+                    onClose={() => {
+                        setIsEditDialogOpen(false);
+                    }}
+                />
+            )}
         </ThemedView>
     );
 };
