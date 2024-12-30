@@ -13,7 +13,7 @@ interface ITaskListItemProps {
 }
 
 export const TaskListItem = (p: ITaskListItemProps) => {
-    const { updateTask } = useTask();
+    const { updateTask, deleteTask } = useTask();
     const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
 
     const handleOpenEditDialog = () => {
@@ -38,6 +38,11 @@ export const TaskListItem = (p: ITaskListItemProps) => {
         NotificationHelper.displaySuccessMessage(T.notifications.task.completed);
     };
 
+    const handleDeleteTask = () => {
+        deleteTask(p.task.id);
+        NotificationHelper.displaySuccessMessage(T.notifications.task.removed);
+    };
+
     return (
         <ThemedView style={styles.container}>
             <ThemedText>
@@ -54,9 +59,9 @@ export const TaskListItem = (p: ITaskListItemProps) => {
             </ThemedText>
             <ThemedView style={styles.buttonContainer}>
                 <Button color="darkgreen" title={T.common.edit} onPress={handleOpenEditDialog} />
-                <Button color="darkred" title={"Видалити"} />
-                <Button color="darkorange" title={"Виконувати"} onPress={handleStartTask} />
-                <Button color="darkgray" title={"Завершити"} onPress={handleCompleteTask} />
+                <Button color="darkred" title={T.common.delete} onPress={handleDeleteTask}/>
+                <Button color="darkorange" title={T.common.perform} onPress={handleStartTask} />
+                <Button color="darkgray" title={T.common.complete} onPress={handleCompleteTask} />
             </ThemedView>
             {isEditDialogOpen && (
                 <TaskEditDialog

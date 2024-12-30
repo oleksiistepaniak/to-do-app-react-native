@@ -79,6 +79,23 @@ const TestCompleteTaskComponent = () => {
     );
 };
 
+const TestDeleteTaskComponent = () => {
+    const { tasks, createTask, deleteTask } = useTask();
+
+    useEffect(() => {
+        createTask(params);
+    }, []);
+
+    return (
+        <View>
+            <Button title="DELETE TASK" onPress={() => deleteTask(tasks[0].id)} />
+            {tasks.length
+                ? tasks.map((it) => <ThemedText key={it.id}>{it.status}</ThemedText>)
+                : <ThemedText>DELETED</ThemedText>}
+        </View>
+    );
+};
+
 describe("TaskContext.test", () => {
     it("should add a task when createTask is called", () => {
         const { getByText } = render(
@@ -134,5 +151,20 @@ describe("TaskContext.test", () => {
         fireEvent.press(completeButton);
 
         expect(getByText("COMPLETED")).toBeTruthy();
+    });
+
+    it("should delete the task when deleteTask is called", () => {
+        const { getByText } = render(
+            <TaskProvider>
+                <TestDeleteTaskComponent />
+            </TaskProvider>,
+        );
+
+        expect(getByText("CREATED")).toBeTruthy();
+
+        const deleteButton = getByText("DELETE TASK");
+        fireEvent.press(deleteButton);
+
+        expect(getByText("DELETED")).toBeTruthy();
     });
 });

@@ -5,6 +5,7 @@ interface TaskContextType {
     tasks: ITask[];
     createTask: (params: TCreateTaskParams) => void;
     updateTask: (id: number, params: Partial<TCreateTaskParams>) => void;
+    deleteTask: (id: number) => void;
 }
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
@@ -38,7 +39,11 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         });
     }
 
-    return <TaskContext.Provider value={{ tasks, createTask, updateTask }}>{children}</TaskContext.Provider>;
+    function deleteTask(id: number): void {
+        setTasks((prev) => prev.filter((it) => it.id !== id));
+    }
+
+    return <TaskContext.Provider value={{ tasks, createTask, updateTask, deleteTask }}>{children}</TaskContext.Provider>;
 };
 
 export const useTask = (): TaskContextType => {
