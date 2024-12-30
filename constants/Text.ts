@@ -21,6 +21,7 @@ export const T = {
     },
     descriptions: {
         edit_task: "Тут Ви можете редагувати Ваше завдання!",
+        main_page: "Ласкаво просимо до додатку для списку справ - Alex Mobile TODO!",
     },
     titles: {
         tabs: {
