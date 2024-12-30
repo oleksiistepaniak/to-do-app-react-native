@@ -1,4 +1,4 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ParallaxScrollView from "@/components/common/ParallaxScrollView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { StyleSheet } from "react-native";
 import { TaskListItem } from "@/components/task/TaskListItem";

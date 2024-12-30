@@ -3,7 +3,7 @@ import { TaskProvider, useTask } from "@/contexts/TaskContext";
 import { Button, View } from "react-native";
 import { TCreateTaskParams } from "@/types/types";
 import { fireEvent, render } from "@testing-library/react-native";
-import { ThemedText } from "@/components/ThemedText";
+import { ThemedText } from "@/components/common/ThemedText";
 
 const params: TCreateTaskParams = {
     title: "title",

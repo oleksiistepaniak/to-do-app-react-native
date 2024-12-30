@@ -1,9 +1,9 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ParallaxScrollView from "@/components/common/ParallaxScrollView";
 import { Button, StyleSheet, TextInput } from "react-native";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useMemo, useState } from "react";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/common/ThemedText";
+import { ThemedView } from "@/components/common/ThemedView";
 import { T } from "@/constants/Text";
 import { NotificationHelper } from "@/helpers/NotificationHelper";
 import { TCreateTaskParams } from "@/types/types";

@@ -1,5 +1,5 @@
-import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/common/ThemedView";
+import { ThemedText } from "@/components/common/ThemedText";
 import { T } from "@/constants/Text";
 import { Button, StyleSheet } from "react-native";
 import { ITask, TTaskStatus } from "@/types/types";

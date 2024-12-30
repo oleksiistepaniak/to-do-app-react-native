@@ -3,7 +3,7 @@ import { T } from "@/constants/Text";
 import { StyleSheet, TextInput } from "react-native";
 import { useState } from "react";
 import { ITask } from "@/types/types";
-import { ThemedView } from "@/components/ThemedView";
+import { ThemedView } from "@/components/common/ThemedView";
 import { useTask } from "@/contexts/TaskContext";
 import { NotificationHelper } from "@/helpers/NotificationHelper";
 
