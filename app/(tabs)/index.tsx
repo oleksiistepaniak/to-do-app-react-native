@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/common/ParallaxScrollView";
 import { ThemedText } from "@/components/common/ThemedText";
